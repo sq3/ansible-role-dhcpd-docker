@@ -1,0 +1,11 @@
+---
+- name: dhcpd docker container
+  docker_container:
+    name: "{{ dcpd_instance_name }}"
+    image: sq33ze/dhcpd
+    state: started
+    recreate: yes
+    pull: true
+    net: host
+    volumes:
+      - "{{ dhcpd_config_path }}":/etc/dhcp/dhcpd.conf
